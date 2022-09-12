@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class Parse {
+public class Parser {
     public static Map<String, Object> getData(String contains) throws Exception {
         return parse(contains);
     }

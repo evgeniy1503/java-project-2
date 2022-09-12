@@ -11,7 +11,7 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - run: make build
+      - run: make build-run
       - name: Publish code coverage
         uses: paambaati/codeclimate-action@v3.0.0
         env:
@@ -20,5 +20,3 @@ jobs:
         with:
           coverageCommand: make report
           coverageLocations: ${{github.workspace}}/build/reports/jacoco/test/jacocoTestReport.xml:jacoco
-      - name: build
-        run: make build-run
