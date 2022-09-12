@@ -54,3 +54,6 @@ test {
 jacocoTestReport {
     dependsOn test
 }
+testlogger {
+    showStandardStreams true
+}
