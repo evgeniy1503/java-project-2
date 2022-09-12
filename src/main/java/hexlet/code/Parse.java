@@ -12,8 +12,10 @@ public class Parse {
     }
 
     public static Map<String, Object> parse(String date) throws Exception {
+
         ObjectMapper objectMapper = new ObjectMapper();
         Map<String, Object> dataMap = objectMapper.readValue(date, new TypeReference<TreeMap<String, Object>>() { });
         return dataMap;
+
     }
 }
