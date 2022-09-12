@@ -1,5 +1,20 @@
 run-dist: #запуск программы
 	./build/install/app/bin/app
 
-check:
-	./gradlew checkstyleMain
+lint:
+	./gradlew checkstyleMain checkstyleTest
+
+build:
+	./gradlew clean build
+
+run:
+	./gradlew run
+
+install:
+	./gradlew clean installDist
+
+.PHONY: build
+
+
+
+
