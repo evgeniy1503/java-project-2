@@ -1,6 +1,9 @@
 run-dist: #запуск программы
 	./build/install/app/bin/app
 
+test:
+	./gradlew test
+
 lint:
 	./gradlew checkstyleMain checkstyleTest
 
@@ -15,6 +18,8 @@ install:
 
 report:
 	./gradlew jacocoTestReport
+
+build-run: build test lint
 
 .PHONY: build
 
