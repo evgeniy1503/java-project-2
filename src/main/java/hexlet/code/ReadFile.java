@@ -25,4 +25,16 @@ public class ReadFile {
         return containsFile;
 
     }
+
+    public static String getExtensionFile(String pathToFile) throws Exception {
+        String extension;
+        if (pathToFile.contains(Parser.JSON)) {
+            extension = Parser.JSON;
+        } else if (pathToFile.contains(Parser.YML) || pathToFile.contains(Parser.YAML)) {
+            extension = Parser.YML;
+        } else {
+            throw new Exception("Not correct format");
+        }
+        return extension;
+    }
 }

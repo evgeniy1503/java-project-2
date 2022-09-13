@@ -9,8 +9,11 @@ public class Differ {
         String containsFileOne = ReadFile.readFile(firstFilePath);
         String containsFileTwo = ReadFile.readFile(secondFilePath);
 
-        Map<String, Object> dataFileOne = Parser.getData(containsFileOne);
-        Map<String, Object> dataFileTwo = Parser.getData(containsFileTwo);
+        String extensionFile1 = ReadFile.getExtensionFile(firstFilePath);
+        String extensionFile2 = ReadFile.getExtensionFile(secondFilePath);
+
+        Map<String, Object> dataFileOne = Parser.getData(containsFileOne, extensionFile1);
+        Map<String, Object> dataFileTwo = Parser.getData(containsFileTwo, extensionFile2);
 
         return getDiff(dataFileOne, dataFileTwo);
 

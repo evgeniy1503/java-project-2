@@ -4,6 +4,9 @@ run-dist: #запуск программы
 test:
 	./gradlew test
 
+clean:
+	./gradlew clean
+
 lint:
 	./gradlew checkstyleMain checkstyleTest
 

@@ -31,4 +31,26 @@ class AppTest {
         assertThat(actual).isEqualTo(expected);
 
     }
+
+    @Test
+    public void testDiffYml() throws Exception {
+
+        var filePath1 = "src/main/resources/file1.yml";
+        var filePath2 = "src/main/resources/file2.yml";
+        String actual = Differ.generate(filePath1, filePath2);
+        String expected = Files.readString(Path.of("src/test/resources/result_test.txt"));
+        assertThat(actual).isEqualTo(expected);
+
+    }
+
+    @Test
+    public void testDiffEmptyYml() throws Exception {
+
+        var filePath1 = "src/main/resources/file_Empty_1.yml";
+        var filePath2 = "src/main/resources/file_Empty_2.yml";
+        String actual = Differ.generate(filePath1, filePath2);
+        String expected = Files.readString(Path.of("src/test/resources/result_test_empty.txt"));
+        assertThat(actual).isEqualTo(expected);
+
+    }
 }
