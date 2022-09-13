@@ -9,17 +9,9 @@ public class ReadFile {
 
         String containsFile;
         Path pathFile;
-
-        if (pathToFile.contains("src/main/resources/")) {
-            File file = new File(pathToFile);
-            String absolutePath = file.getAbsolutePath();
-            pathFile = Path.of(absolutePath);
-        } else {
-            String path = "src/main/resources/" + pathToFile;
-            File file = new File(path);
-            String absolutePath = file.getAbsolutePath();
-            pathFile = Path.of(absolutePath);
-        }
+        File file = new File(pathToFile);
+        String absolutePath = file.getAbsolutePath();
+        pathFile = Path.of(absolutePath);
 
         containsFile = Files.readString(pathFile);
         return containsFile;

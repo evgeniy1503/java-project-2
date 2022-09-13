@@ -11,3 +11,5 @@
 ### Format YML:
 
 <a href="https://asciinema.org/a/W36GxQSAODegXi4QNtAFXjpXV" target="_blank"><img src="https://asciinema.org/a/W36GxQSAODegXi4QNtAFXjpXV.svg" /></a>
+
+<a href="https://asciinema.org/a/NdR8d3lo004ia7o9tn7iYO2I1" target="_blank"><img src="https://asciinema.org/a/NdR8d3lo004ia7o9tn7iYO2I1.svg" /></a>

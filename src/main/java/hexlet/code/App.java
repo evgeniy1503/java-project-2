@@ -21,11 +21,11 @@ public class App implements Callable<Integer> {
     private String filePath2;
 
     @Option(names = {"-f", "--format"}, description = "output format [default: stylish]")
-    private String format;
+    private String format = "stylish";
 
     @Override
     public final Integer call() throws Exception {
-        String result = Differ.generate(filePath1, filePath2);
+        String result = Differ.generate(filePath1, filePath2, format);
         System.out.println(result);
         return 0;
     }

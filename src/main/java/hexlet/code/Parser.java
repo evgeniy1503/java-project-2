@@ -12,6 +12,7 @@ public class Parser {
     public static final String JSON = "json";
     public static final String YML = "yml";
     public static final String YAML = "yaml";
+
     public static Map<String, Object> getData(String contains, String extension) throws Exception {
         return parse(contains, extension);
     }
