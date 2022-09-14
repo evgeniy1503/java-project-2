@@ -19,7 +19,7 @@ public class Differ {
         Map<String, Object> dataFileOne = Parser.getData(containsFileOne, extensionFileOne);
         Map<String, Object> dataFileTwo = Parser.getData(containsFileTwo, extensionFileTwo);
 
-        Map<String, Item> differ = GetDifferences.getDiff(dataFileOne, dataFileTwo);
+        Map<String, Item> differ = Differences.getDiff(dataFileOne, dataFileTwo);
 
         switch (format) {
             case "plain":
