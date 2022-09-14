@@ -3,10 +3,15 @@
  */
 package hexlet.code;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import hexlet.code.formatter.Json;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Map;
+import java.util.TreeMap;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -118,5 +123,18 @@ class AppTest {
         String expected = Files.readString(Path.of(pathToDirectoryResult + "result_DiffJson.json"));
         assertThat(actual).isEqualTo(expected);
     }
+
+    @Test
+    public void testMakeJson() throws IOException {
+
+        Map<String, Item> date = new TreeMap<>();
+        date.put("Dog", new Item("Djek", "Hatico", "deleted"));
+        date.put("Cat", new Item("Fill", "Sharik", "added"));
+        var actual = Json.makeJson(date);
+        var expected = Files.readString(Path.of(pathToDirectoryResult + "result_makeJson.txt"));
+        assertThat(actual).isEqualTo(expected);
+
+    }
+
 
 }
