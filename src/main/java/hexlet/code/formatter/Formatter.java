@@ -22,11 +22,11 @@ public class Formatter {
         for (Map.Entry<String, Item> item : differ.entrySet()) {
             switch (item.getValue().getStatus()) {
                 case ADDED:
-                    result.append("\n").append(" ".repeat(2)).append("+ ")
+                    result.append("\n").append(" ".repeat(2)).append("+").append(" ")
                             .append(item.getKey()).append(": ").append(item.getValue().getOldValue());
                     break;
                 case DELETED:
-                    result.append("\n").append(" ".repeat(2)).append("- ")
+                    result.append("\n").append(" ".repeat(2)).append("-").append(" ")
                             .append(item.getKey()).append(": ").append(item.getValue().getOldValue());
                     break;
 
