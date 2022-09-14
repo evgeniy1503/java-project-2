@@ -16,7 +16,7 @@ public class Differences {
 
     public static Map<String, Item> getDiff(Map<String, Object> dataFileOne, Map<String, Object> dataFileTwo) {
 
-        Map<String, Item> differ = new TreeMap<String, Item>();
+        Map<String, Item> differ = new TreeMap<>();
 
         Set<String> allKey = new TreeSet<>(dataFileOne.keySet());
         allKey.addAll(dataFileTwo.keySet());
@@ -27,12 +27,10 @@ public class Differences {
                 differ.put(key, new Item(dataFileTwo.get(key), ADDED));
             } else if (!dataFileTwo.containsKey(key)) {
                 differ.put(key, new Item(dataFileOne.get(key), DELETED));
+            } else if (Objects.equals(dataFileOne.get(key), dataFileTwo.get(key))) {
+                differ.put(key, new Item(dataFileOne.get(key), (dataFileTwo.get(key)), UNCHANGED));
             } else {
-                if (Objects.equals(dataFileOne.get(key), dataFileTwo.get(key))) {
-                    differ.put(key, new Item(dataFileOne.get(key), (dataFileTwo.get(key)), UNCHANGED));
-                } else {
-                    differ.put(key, new Item(dataFileOne.get(key), (dataFileTwo.get(key)), CHANGED));
-                }
+                differ.put(key, new Item(dataFileOne.get(key), (dataFileTwo.get(key)), CHANGED));
             }
         }
         return differ;
