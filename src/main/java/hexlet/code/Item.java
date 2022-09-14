@@ -16,7 +16,7 @@ public final class Item {
     public Item(Object inputOdValue, String inputStatus) {
         this.oldValue = inputOdValue;
         this.status = inputStatus;
-        this.newValue = null;
+        this.newValue = "NOT";
     }
 
     public Object getNewValue() {

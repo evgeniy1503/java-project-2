@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import hexlet.code.formatter.Json;
 import hexlet.code.formatter.Plain;
 import hexlet.code.formatter.Stylish;
 
@@ -21,12 +22,11 @@ public class Differ {
 
         Map<String, Item> differ = Differences.getDiff(dataFileOne, dataFileTwo);
 
-        switch (format) {
-            case "plain":
-                return Plain.makePlain(differ);
-            default:
-                return Stylish.makeStylish(differ);
-        }
+        return switch (format) {
+            case "plain" -> Plain.makePlain(differ);
+            case "json" -> Json.makeJson(differ);
+            default -> Stylish.makeStylish(differ);
+        };
 
     }
 
