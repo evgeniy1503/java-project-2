@@ -21,23 +21,24 @@ public class Stylish {
 
         result.append("{");
         for (Map.Entry<String, Item> item : differ.entrySet()) {
+            result.append("\n").append(" ".repeat(2));
             switch (item.getValue().getStatus()) {
                 case ADDED:
-                    result.append("\n").append(" ".repeat(2)).append("+").append(" ")
+                    result.append("+").append(" ")
                             .append(item.getKey()).append(": ").append(item.getValue().getOldValue());
                     break;
                 case DELETED:
-                    result.append("\n").append(" ".repeat(2)).append("- ")
+                    result.append("-").append(" ")
                             .append(item.getKey()).append(": ").append(item.getValue().getOldValue());
                     break;
                 case CHANGED:
-                    result.append("\n").append(" ".repeat(2)).append("-").append(" ")
+                    result.append("-").append(" ")
                             .append(item.getKey()).append(": ").append(item.getValue().getOldValue());
                     result.append("\n").append(" ".repeat(2)).append("+").append(" ")
                             .append(item.getKey()).append(": ").append(item.getValue().getNewValue());
                     break;
                 default:
-                    result.append("\n").append(" ".repeat(TABULATION))
+                    result.append(" ".repeat(2))
                             .append(item.getKey()).append(": ").append(item.getValue().getOldValue());
 
             }
