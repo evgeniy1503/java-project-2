@@ -13,7 +13,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 class AppTest {
 
     private  final String pathToDirectory = "src/test/resources/";
-    private  final String pathToDirectoryYml = "src/test/resources/yml/";
     private  final String pathToDirectoryResult = "src/test/resources/result/";
 
 
@@ -41,8 +40,8 @@ class AppTest {
     @Test
     public void testDiffYml() throws Exception {
 
-        var filePath1 = pathToDirectoryYml + "file1.yml";
-        var filePath2 = pathToDirectoryYml + "file2.yml";
+        var filePath1 = pathToDirectory + "file1.yml";
+        var filePath2 = pathToDirectory + "file2.yml";
         String actual = Differ.generate(filePath1, filePath2, "stylish");
         String expected = Files.readString(Path.of(pathToDirectoryResult + "result_test.txt"));
         assertThat(actual).isEqualTo(expected);
@@ -52,8 +51,8 @@ class AppTest {
     @Test
     public void testDiffEmptyYml() throws Exception {
 
-        var filePath1 = pathToDirectoryYml + "file_Empty_1.yml";
-        var filePath2 = pathToDirectoryYml + "file_Empty_2.yml";
+        var filePath1 = pathToDirectory + "file_Empty_1.yml";
+        var filePath2 = pathToDirectory + "file_Empty_2.yml";
         String actual = Differ.generate(filePath1, filePath2, "stylish");
         String expected = Files.readString(Path.of(pathToDirectoryResult + "result_test_empty.txt"));
         assertThat(actual).isEqualTo(expected);
@@ -73,8 +72,8 @@ class AppTest {
     @Test
     public void testDiffStylishYml() throws Exception {
 
-        var filePath1 = pathToDirectoryYml + "file3.yml";
-        var filePath2 = pathToDirectoryYml + "file4.yml";
+        var filePath1 = pathToDirectory + "file3.yml";
+        var filePath2 = pathToDirectory + "file4.yml";
         String actual = Differ.generate(filePath1, filePath2, "stylish");
         String expected = Files.readString(Path.of(pathToDirectoryResult + "result_DiffStylish.txt"));
         assertThat(actual).isEqualTo(expected);
