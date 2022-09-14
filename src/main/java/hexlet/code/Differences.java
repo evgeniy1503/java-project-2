@@ -30,15 +30,12 @@ public class Differences {
                 differ.put(key, new Item(newValue, ADDED));
             } else if (!dataFileTwo.containsKey(key)) {
                 differ.put(key, new Item(oldValue, DELETED));
-            } else {
-                if (Objects.equals(dataFileOne.get(key), dataFileTwo.get(key))) {
+            } else if (Objects.equals(dataFileOne.get(key), dataFileTwo.get(key))) {
                     differ.put(key, new Item(oldValue, newValue, UNCHANGED));
-                } else {
+            } else {
                     differ.put(key, new Item(oldValue, newValue, CHANGED));
                 }
             }
-        }
-
         return differ;
 
     }
