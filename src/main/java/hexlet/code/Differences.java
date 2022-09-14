@@ -23,7 +23,6 @@ public class Differences {
         allKey.addAll(dataFileTwo.keySet());
 
         for (String key : allKey) {
-
             if (!dataFileOne.containsKey(key)) {
                 differ.put(key, new Item(dataFileTwo.get(key), ADDED));
             } else if (!dataFileTwo.containsKey(key)) {
