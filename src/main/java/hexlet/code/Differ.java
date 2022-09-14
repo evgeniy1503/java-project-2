@@ -29,5 +29,7 @@ public class Differ {
         };
 
     }
-
+    public static String generate(String firstFilePath, String secondFilePath) throws Exception {
+        return generate(firstFilePath, secondFilePath, "stylish");
+    }
 }

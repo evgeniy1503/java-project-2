@@ -21,7 +21,7 @@ class AppTest {
 
         var filePath1 = pathToDirectory + "file1.json";
         var filePath2 = pathToDirectory + "file2.json";
-        String actual = Differ.generate(filePath1, filePath2, "stylish");
+        String actual = Differ.generate(filePath1, filePath2);
         String expected = Files.readString(Path.of(pathToDirectoryResult + "result_test.txt"));
         assertThat(actual).isEqualTo(expected);
 
