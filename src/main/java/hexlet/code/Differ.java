@@ -1,6 +1,7 @@
 package hexlet.code;
 
-import hexlet.code.formatter.Formatter;
+import hexlet.code.formatter.Plain;
+import hexlet.code.formatter.Stylish;
 
 import java.util.Map;
 
@@ -20,9 +21,13 @@ public class Differ {
 
         Map<String, Item> differ = GetDifferences.getDiff(dataFileOne, dataFileTwo);
 
-        String result = Formatter.stylish(differ);
+        switch (format) {
+            case "plain":
+                return Plain.makePlain(differ);
+            default:
+                return Stylish.makeStylish(differ);
+        }
 
-        return result;
     }
 
 }

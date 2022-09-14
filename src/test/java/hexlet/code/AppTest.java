@@ -101,4 +101,13 @@ class AppTest {
 
     }
 
+    @Test
+    public void testDiffPlain() throws Exception {
+        var filePath1 = pathToDirectory + "file3.json";
+        var filePath2 = pathToDirectory + "file4.json";
+        String actual = Differ.generate(filePath1, filePath2, "plain");
+        String expected = Files.readString(Path.of(pathToDirectoryResult + "result_test_DiffPlain.txt"));
+        assertThat(actual).isEqualTo(expected);
+    }
+
 }

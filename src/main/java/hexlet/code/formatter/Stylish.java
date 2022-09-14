@@ -9,12 +9,11 @@ import static hexlet.code.Status.ADDED;
 import static hexlet.code.Status.DELETED;
 import static hexlet.code.Status.CHANGED;
 
-public class Formatter {
+public class Stylish {
 
     public static final int TABULATION = 4;
-    public static final String MINUS = "-";
-    public static final String PLAS = "+";
-    public static String stylish(Map<String, Item> differ) {
+
+    public static String makeStylish(Map<String, Item> differ) {
 
 
 
@@ -24,17 +23,17 @@ public class Formatter {
         for (Map.Entry<String, Item> item : differ.entrySet()) {
             switch (item.getValue().getStatus()) {
                 case ADDED:
-                    result.append("\n").append(" ".repeat(2)).append(PLAS).append(" ")
+                    result.append("\n").append(" ".repeat(2)).append("+").append(" ")
                             .append(item.getKey()).append(": ").append(item.getValue().getOldValue());
                     break;
                 case DELETED:
-                    result.append("\n").append(" ".repeat(2)).append(MINUS).append(" ")
+                    result.append("\n").append(" ".repeat(2)).append("-").append(" ")
                             .append(item.getKey()).append(": ").append(item.getValue().getOldValue());
                     break;
                 case CHANGED:
-                    result.append("\n").append(" ".repeat(2)).append(MINUS).append(" ")
+                    result.append("\n").append(" ".repeat(2)).append("-").append(" ")
                             .append(item.getKey()).append(": ").append(item.getValue().getOldValue());
-                    result.append("\n").append(" ".repeat(2)).append(PLAS).append(" ")
+                    result.append("\n").append(" ".repeat(2)).append("+").append(" ")
                             .append(item.getKey()).append(": ").append(item.getValue().getNewValue());
                     break;
                 default:
