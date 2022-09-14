@@ -23,7 +23,9 @@ public class ReadFile {
     }
 
     public static String getExtensionFile(String pathToFile) throws Exception {
+
         String extension;
+
         if (pathToFile.endsWith(JSON)) {
             extension = JSON;
         } else if (pathToFile.endsWith(YML) || pathToFile.endsWith(YAML)) {
@@ -32,5 +34,6 @@ public class ReadFile {
             throw new Exception("Not correct format");
         }
         return extension;
+
     }
 }

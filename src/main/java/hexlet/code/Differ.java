@@ -23,13 +23,17 @@ public class Differ {
         Map<String, Item> differ = Differences.getDiff(dataFileOne, dataFileTwo);
 
         return switch (format) {
+
             case "plain" -> Plain.makePlain(differ);
             case "json" -> Json.makeJson(differ);
             default -> Stylish.makeStylish(differ);
+
         };
 
     }
     public static String generate(String firstFilePath, String secondFilePath) throws Exception {
+
         return generate(firstFilePath, secondFilePath, "stylish");
+
     }
 }

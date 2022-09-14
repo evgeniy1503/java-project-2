@@ -32,8 +32,10 @@ public class App implements Callable<Integer> {
 
 
     public static void main(String[] args) {
+
         int exitCode = new CommandLine(new App()).execute(args);
         System.exit(exitCode);
+
     }
 
 
