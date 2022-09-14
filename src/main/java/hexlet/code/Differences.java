@@ -18,7 +18,8 @@ public class Differences {
 
         Map<String, Item> differ = new TreeMap<>();
 
-        Set<String> allKey = new TreeSet<>(dataFileOne.keySet());
+        Set<String> allKey = new TreeSet<>();
+        allKey.addAll(dataFileOne.keySet());
         allKey.addAll(dataFileTwo.keySet());
 
         for (String key : allKey) {
