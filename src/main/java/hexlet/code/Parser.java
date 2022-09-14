@@ -7,27 +7,30 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import java.util.Map;
 import java.util.TreeMap;
 
+import static hexlet.code.ReadFile.YML;
+import static hexlet.code.ReadFile.YAML;
+
 public class Parser {
 
-    public static final String JSON = "json";
-    public static final String YML = "yml";
-    public static final String YAML = "yaml";
+
 
     public static Map<String, Object> getData(String contains, String extension) throws Exception {
-        return parse(contains, extension);
-    }
-
-    public static Map<String, Object> parse(String date, String extension) throws Exception {
 
         ObjectMapper objectMapper;
 
-        if (extension.equals(JSON)) {
-            objectMapper = new ObjectMapper();
-        } else {
-            objectMapper = new ObjectMapper(new YAMLFactory());
+        switch (extension) {
+            case YAML, YML -> {
+                objectMapper = new ObjectMapper(new YAMLFactory());
+                objectMapper.readValue(contains, new TypeReference<TreeMap<String, Object>>() {
+                });
+            }
+            default -> {
+                objectMapper = new ObjectMapper();
+                objectMapper.readValue(contains, new TypeReference<TreeMap<String, Object>>() {
+                });
+            }
         }
-
-        return objectMapper.readValue(date, new TypeReference<TreeMap<String, Object>>() { });
-
+        return objectMapper.readValue(contains, new TypeReference<TreeMap<String, Object>>() { });
     }
+
 }
