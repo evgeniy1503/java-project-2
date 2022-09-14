@@ -12,14 +12,18 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class AppTest {
 
-    private String pathToDirectory = "src/test/resources/";
+    private  final String pathToDirectory = "src/test/resources/";
+    private  final String pathToDirectoryYml = "src/test/resources/yml/";
+    private  final String pathToDirectoryResult = "src/test/resources/result/";
+
+
     @Test
     public void testDiffJson() throws Exception {
 
         var filePath1 = pathToDirectory + "file1.json";
         var filePath2 = pathToDirectory + "file2.json";
         String actual = Differ.generate(filePath1, filePath2, "stylish");
-        String expected = Files.readString(Path.of(pathToDirectory + "result_test.txt"));
+        String expected = Files.readString(Path.of(pathToDirectoryResult + "result_test.txt"));
         assertThat(actual).isEqualTo(expected);
 
     }
@@ -29,7 +33,7 @@ class AppTest {
         var filePath1 = pathToDirectory + "file_Empty_1.json";
         var filePath2 = pathToDirectory + "file_Empty_2.json";
         String actual = Differ.generate(filePath1, filePath2, "stylish");
-        String expected = Files.readString(Path.of(pathToDirectory + "result_test_empty.txt"));
+        String expected = Files.readString(Path.of(pathToDirectoryResult + "result_test_empty.txt"));
         assertThat(actual).isEqualTo(expected);
 
     }
@@ -37,10 +41,10 @@ class AppTest {
     @Test
     public void testDiffYml() throws Exception {
 
-        var filePath1 = pathToDirectory + "file1.yml";
-        var filePath2 = pathToDirectory + "file2.yml";
+        var filePath1 = pathToDirectoryYml + "file1.yml";
+        var filePath2 = pathToDirectoryYml + "file2.yml";
         String actual = Differ.generate(filePath1, filePath2, "stylish");
-        String expected = Files.readString(Path.of(pathToDirectory + "result_test.txt"));
+        String expected = Files.readString(Path.of(pathToDirectoryResult + "result_test.txt"));
         assertThat(actual).isEqualTo(expected);
 
     }
@@ -48,10 +52,10 @@ class AppTest {
     @Test
     public void testDiffEmptyYml() throws Exception {
 
-        var filePath1 = pathToDirectory + "file_Empty_1.yml";
-        var filePath2 = pathToDirectory + "file_Empty_2.yml";
+        var filePath1 = pathToDirectoryYml + "file_Empty_1.yml";
+        var filePath2 = pathToDirectoryYml + "file_Empty_2.yml";
         String actual = Differ.generate(filePath1, filePath2, "stylish");
-        String expected = Files.readString(Path.of(pathToDirectory + "result_test_empty.txt"));
+        String expected = Files.readString(Path.of(pathToDirectoryResult + "result_test_empty.txt"));
         assertThat(actual).isEqualTo(expected);
 
     }
@@ -62,17 +66,37 @@ class AppTest {
         var filePath1 = pathToDirectory + "file3.json";
         var filePath2 = pathToDirectory + "file4.json";
         String actual = Differ.generate(filePath1, filePath2, "stylish");
-        String expected = Files.readString(Path.of(pathToDirectory + "result_DiffStylish.txt"));
+        String expected = Files.readString(Path.of(pathToDirectoryResult + "result_DiffStylish.txt"));
         assertThat(actual).isEqualTo(expected);
 
     }
     @Test
     public void testDiffStylishYml() throws Exception {
 
-        var filePath1 = pathToDirectory + "file3.yml";
-        var filePath2 = pathToDirectory + "file4.yml";
+        var filePath1 = pathToDirectoryYml + "file3.yml";
+        var filePath2 = pathToDirectoryYml + "file4.yml";
         String actual = Differ.generate(filePath1, filePath2, "stylish");
-        String expected = Files.readString(Path.of(pathToDirectory + "result_DiffStylish.txt"));
+        String expected = Files.readString(Path.of(pathToDirectoryResult + "result_DiffStylish.txt"));
+        assertThat(actual).isEqualTo(expected);
+
+    }
+
+    @Test
+    public void testReadFile() throws Exception {
+
+        var filePath1 = pathToDirectory + "file1.json";
+        String actual = ReadFile.readFile(filePath1);
+        String expected = Files.readString(Path.of(pathToDirectoryResult + "result_test_readFile.txt"));
+        assertThat(actual).isEqualTo(expected);
+
+    }
+
+    @Test
+    public void testGetExtensionFile() throws Exception {
+
+        var filePath1 = pathToDirectory + "file1.json";
+        String actual = ReadFile.getExtensionFile(filePath1);
+        String expected = "json";
         assertThat(actual).isEqualTo(expected);
 
     }
