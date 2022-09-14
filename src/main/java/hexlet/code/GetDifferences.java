@@ -24,15 +24,13 @@ public class GetDifferences {
         for (String key : allKey) {
             if (!dataFileOne.containsKey(key)) {
                 differ.put(key, new Item(dataFileTwo.get(key), ADDED));
-            } else {
-                if (!dataFileTwo.containsKey(key)) {
+            } else if (!dataFileTwo.containsKey(key)) {
                     differ.put(key, new Item(dataFileOne.get(key), DELETED));
-                } else {
-                    if (Objects.equals(dataFileOne.get(key), dataFileTwo.get(key))) {
+            } else {
+                if (Objects.equals(dataFileOne.get(key), dataFileTwo.get(key))) {
                         differ.put(key, new Item(dataFileOne.get(key), (dataFileTwo.get(key)), UNCHANGED));
-                    } else {
+                } else {
                         differ.put(key, new Item(dataFileOne.get(key), (dataFileTwo.get(key)), CHANGED));
-                    }
                 }
             }
         }
