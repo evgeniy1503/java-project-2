@@ -3,7 +3,6 @@
  */
 package hexlet.code;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import hexlet.code.formatter.Json;
 import org.junit.jupiter.api.Test;
 
