@@ -16,10 +16,10 @@ public class GetDifferences {
 
     public static Map<String, Item> getDiff(Map<String, Object> dataFileOne, Map<String, Object> dataFileTwo) {
 
+        Map<String, Item> differ = new TreeMap<String, Item>();
+
         Set<String> allKey = new TreeSet<>(dataFileOne.keySet());
         allKey.addAll(dataFileTwo.keySet());
-
-        Map<String, Item> differ = new TreeMap<String, Item>();
 
         for (String key : allKey) {
             if (!dataFileOne.containsKey(key)) {

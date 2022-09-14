@@ -31,7 +31,6 @@ public class Formatter {
                     result.append("\n").append(" ".repeat(2)).append(MINUS).append(" ")
                             .append(item.getKey()).append(": ").append(item.getValue().getOldValue());
                     break;
-
                 case CHANGED:
                     result.append("\n").append(" ".repeat(2)).append(MINUS).append(" ")
                             .append(item.getKey()).append(": ").append(item.getValue().getOldValue());
