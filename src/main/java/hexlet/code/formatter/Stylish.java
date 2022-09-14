@@ -11,11 +11,7 @@ import static hexlet.code.Status.CHANGED;
 
 public class Stylish {
 
-    public static final int TABULATION = 4;
-
     public static String makeStylish(Map<String, Item> differ) {
-
-
 
         StringBuilder result = new StringBuilder();
 
@@ -42,9 +38,7 @@ public class Stylish {
                             .append(item.getKey()).append(": ").append(item.getValue().getOldValue());
 
             }
-
         }
-        result.append("\n}");
-        return result.toString();
+        return result.append("\n}").toString();
     }
 }
