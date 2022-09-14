@@ -23,14 +23,16 @@ public class Differences {
         allKey.addAll(dataFileTwo.keySet());
 
         for (String key : allKey) {
+            Object oldValue = dataFileOne.get(key);
+            Object newValue = dataFileTwo.get(key);
             if (!dataFileOne.containsKey(key)) {
-                differ.put(key, new Item(dataFileTwo.get(key), ADDED));
+                differ.put(key, new Item(newValue, ADDED));
             } else if (!dataFileTwo.containsKey(key)) {
-                differ.put(key, new Item(dataFileOne.get(key), DELETED));
+                differ.put(key, new Item(oldValue, DELETED));
             } else if (Objects.equals(dataFileOne.get(key), dataFileTwo.get(key))) {
-                differ.put(key, new Item(dataFileOne.get(key), (dataFileTwo.get(key)), UNCHANGED));
+                differ.put(key, new Item(oldValue, newValue, UNCHANGED));
             } else {
-                differ.put(key, new Item(dataFileOne.get(key), (dataFileTwo.get(key)), CHANGED));
+                differ.put(key, new Item(oldValue, newValue, CHANGED));
             }
         }
 
