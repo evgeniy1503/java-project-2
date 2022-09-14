@@ -12,7 +12,7 @@ import static hexlet.code.Status.DELETED;
 import static hexlet.code.Status.UNCHANGED;
 import static hexlet.code.Status.CHANGED;
 
-public class GetDifferences {
+public class Differences {
 
     public static Map<String, Item> getDiff(Map<String, Object> dataFileOne, Map<String, Object> dataFileTwo) {
 
@@ -22,6 +22,7 @@ public class GetDifferences {
         allKey.addAll(dataFileTwo.keySet());
 
         for (String key : allKey) {
+
             if (!dataFileOne.containsKey(key)) {
                 differ.put(key, new Item(dataFileTwo.get(key), ADDED));
             } else if (!dataFileTwo.containsKey(key)) {
