@@ -27,7 +27,7 @@ public class Stylish {
                             .append(item.getKey()).append(": ").append(item.getValue().getOldValue());
                     break;
                 case DELETED:
-                    result.append("\n").append(" ".repeat(2)).append("-").append(" ")
+                    result.append("\n").append(" ".repeat(2)).append("- ")
                             .append(item.getKey()).append(": ").append(item.getValue().getOldValue());
                     break;
                 case CHANGED:
