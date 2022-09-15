@@ -1,0 +1,2 @@
+Property 'Japan' was removed
+Property 'Russia' was added with value: 'Moscow'

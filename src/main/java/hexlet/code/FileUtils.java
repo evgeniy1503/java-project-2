@@ -4,7 +4,7 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class ReadFile {
+public class FileUtils {
 
     public static final String JSON = "json";
     public static final String YML = "yml";
@@ -22,18 +22,9 @@ public class ReadFile {
 
     }
 
-    public static String getExtensionFile(String pathToFile) throws Exception {
 
-        String extension;
-
-        if (pathToFile.endsWith(JSON)) {
-            extension = JSON;
-        } else if (pathToFile.endsWith(YML) || pathToFile.endsWith(YAML)) {
-            extension = YML;
-        } else {
-            throw new Exception("Not correct format");
-        }
-        return extension;
-
+    public static String getDataFormat(String pathToFile) {
+        int index = pathToFile.lastIndexOf('.');
+        return index > 0 ? pathToFile.substring(index + 1) : "";
     }
 }

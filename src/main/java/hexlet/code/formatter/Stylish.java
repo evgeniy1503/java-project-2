@@ -5,9 +5,9 @@ import hexlet.code.Item;
 import java.util.Map;
 
 
-import static hexlet.code.Status.ADDED;
-import static hexlet.code.Status.DELETED;
-import static hexlet.code.Status.CHANGED;
+import static hexlet.code.Item.ADDED;
+import static hexlet.code.Item.DELETED;
+import static hexlet.code.Item.CHANGED;
 
 public class Stylish {
 

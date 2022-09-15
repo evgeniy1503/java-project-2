@@ -7,10 +7,10 @@ import java.util.TreeSet;
 import java.util.Objects;
 
 
-import static hexlet.code.Status.ADDED;
-import static hexlet.code.Status.DELETED;
-import static hexlet.code.Status.UNCHANGED;
-import static hexlet.code.Status.CHANGED;
+import static hexlet.code.Item.ADDED;
+import static hexlet.code.Item.DELETED;
+import static hexlet.code.Item.UNCHANGED;
+import static hexlet.code.Item.CHANGED;
 
 public class Differences {
 

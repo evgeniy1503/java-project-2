@@ -22,10 +22,4 @@ install:
 report:
 	./gradlew jacocoTestReport
 
-build-run: build test lint
-
 .PHONY: build
-
-
-
-

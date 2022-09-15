@@ -2,11 +2,12 @@ package hexlet.code.formatter;
 
 import hexlet.code.Item;
 
+import java.util.List;
 import java.util.Map;
 
-import static hexlet.code.Status.ADDED;
-import static hexlet.code.Status.DELETED;
-import static hexlet.code.Status.UNCHANGED;
+import static hexlet.code.Item.ADDED;
+import static hexlet.code.Item.DELETED;
+import static hexlet.code.Item.UNCHANGED;
 
 public class Plain {
 
@@ -34,17 +35,19 @@ public class Plain {
         return result.toString().trim();
     }
 
-    public static Object checkValue(Object value) {
+    public static String checkValue(Object value) {
+
+        if (value instanceof Map || value instanceof List) {
+            return "[complex value]";
+        }
+
         if (value == null) {
             return null;
-        } else if (value instanceof Integer) {
-            return value;
         } else if (value instanceof String) {
             return "'" + value + "'";
-        } else if (value instanceof Boolean) {
-            return value;
         } else {
-            return "[complex value]";
+            return value.toString();
+
         }
     }
 }

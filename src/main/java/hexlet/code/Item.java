@@ -3,6 +3,11 @@ package hexlet.code;
 
 public final class Item {
 
+    public static final String ADDED = "added";
+    public static final String DELETED = "deleted";
+    public static final String CHANGED = "changed";
+    public static final String UNCHANGED = "unchanged";
+
     private Object oldValue;
     private Object newValue;
     private String status;

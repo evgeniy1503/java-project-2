@@ -1,1 +1,0 @@
-{"Cat":{"oldValue":"Fill","newValue":"Sharik","status":"added"},"Dog":{"oldValue":"Djek","newValue":"Hatico","status":"deleted"}}

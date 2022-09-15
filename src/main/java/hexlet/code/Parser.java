@@ -7,16 +7,16 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import java.util.Map;
 import java.util.TreeMap;
 
-import static hexlet.code.ReadFile.YML;
-import static hexlet.code.ReadFile.YAML;
+import static hexlet.code.FileUtils.YML;
+import static hexlet.code.FileUtils.YAML;
 
 public class Parser {
 
-    public static Map<String, Object> getData(String contains, String extension) throws Exception {
+    public static Map<String, Object> getData(String contains, String dataFormat) throws Exception {
 
         ObjectMapper objectMapper;
 
-        switch (extension) {
+        switch (dataFormat) {
 
             case YAML, YML -> {
                 objectMapper = new ObjectMapper(new YAMLFactory());
