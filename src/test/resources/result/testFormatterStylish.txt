@@ -1,5 +1,0 @@
-{
-  - Japan: Tokio
-  + Russia: Moscow
-    USA: Washington
-}

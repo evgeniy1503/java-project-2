@@ -24,7 +24,7 @@ public final class Item {
 
         this.oldValue = inputOdValue;
         this.status = inputStatus;
-        this.newValue = "NOT";
+        this.newValue = null;
 
     }
 

@@ -5,13 +5,11 @@ import hexlet.code.Item;
 import java.util.List;
 import java.util.Map;
 
-import static hexlet.code.Item.ADDED;
-import static hexlet.code.Item.DELETED;
-import static hexlet.code.Item.UNCHANGED;
+import static hexlet.code.Item.*;
 
 public class Plain {
 
-    public static String makePlain(Map<String, Item> differ) {
+    public static String makePlain(Map<String, Item> differ) throws Exception {
 
         StringBuilder result = new StringBuilder();
 
@@ -26,9 +24,10 @@ public class Plain {
                             .append("' was added with value: ").append(oldValue).append("\n");
                     case DELETED -> result.append("Property '").append(item.getKey())
                             .append("' was removed").append("\n");
-                    default -> result.append("Property '").append(item.getKey())
+                    case CHANGED -> result.append("Property '").append(item.getKey())
                             .append("' was updated. From ").append(oldValue)
                             .append(" to ").append(newValue).append("\n");
+                    default -> throw new Exception("Error build format Plain");
                 }
             }
         }
@@ -39,9 +38,7 @@ public class Plain {
 
         if (value instanceof Map || value instanceof List) {
             return "[complex value]";
-        }
-
-        if (value == null) {
+        } else if (value == null) {
             return null;
         } else if (value instanceof String) {
             return "'" + value + "'";

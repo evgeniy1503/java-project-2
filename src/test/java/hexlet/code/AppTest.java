@@ -6,20 +6,41 @@ package hexlet.code;
 import hexlet.code.formatter.Json;
 import hexlet.code.formatter.Plain;
 import hexlet.code.formatter.Stylish;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Map;
 import java.util.TreeMap;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class AppTest {
-
+    private static String resultJson;
+    private static String resultPlain;
+    private static String resultStylish;
     private  final String pathToDirectory = "src/test/resources/";
-    private  final String pathToDirectoryResult = "src/test/resources/result/";
+
+    private static Path getFixturePath(String fileName) {
+        return Paths.get("src", "test", "resources", "fixtures", fileName)
+                .toAbsolutePath().normalize();
+    }
+
+    private static String readFixture(String fileName) throws Exception {
+        Path filePath = getFixturePath(fileName);
+        return Files.readString(filePath).trim();
+    }
+
+    // Побочные эффекты правильно делать не на уровне класса, а внутри хуков
+    @BeforeAll
+    public static void beforeAll() throws Exception {
+        resultJson = readFixture("result_json.json");
+        resultPlain = readFixture("result_plain.txt");
+        resultStylish = readFixture("result_stylish.txt");
+    }
 
     @Test
     public void testJsonDefault() throws Exception {
@@ -27,7 +48,7 @@ class AppTest {
         var filePath1 = pathToDirectory + "file1.json";
         var filePath2 = pathToDirectory + "file2.json";
         String actual = Differ.generate(filePath1, filePath2);
-        String expected = Files.readString(Path.of(pathToDirectoryResult + "result_formatJsonDefault.txt"));
+        String expected = resultStylish;
         assertThat(actual).isEqualTo(expected);
 
     }
@@ -37,7 +58,7 @@ class AppTest {
         var filePath1 = pathToDirectory + "file1.json";
         var filePath2 = pathToDirectory + "file2.json";
         String actual = Differ.generate(filePath1, filePath2, "plain");
-        String expected = Files.readString(Path.of(pathToDirectoryResult + "formatJsonWithPlain.txt"));
+        String expected = resultPlain;
         assertThat(actual).isEqualTo(expected);
 
     }
@@ -48,7 +69,7 @@ class AppTest {
         var filePath1 = pathToDirectory + "file1.json";
         var filePath2 = pathToDirectory + "file2.json";
         String actual = Differ.generate(filePath1, filePath2, "stylish");
-        String expected = Files.readString(Path.of(pathToDirectoryResult + "result_formatJsonDefault.txt"));
+        String expected = resultStylish;
         assertThat(actual).isEqualTo(expected);
 
     }
@@ -59,7 +80,7 @@ class AppTest {
         var filePath1 = pathToDirectory + "file1.json";
         var filePath2 = pathToDirectory + "file2.json";
         String actual = Differ.generate(filePath1, filePath2, "json");
-        String expected = Files.readString(Path.of(pathToDirectoryResult + "formatJsonWithJson.json"));
+        String expected = resultJson;
         assertThat(actual).isEqualTo(expected);
 
     }
@@ -67,10 +88,10 @@ class AppTest {
     @Test
     public void testYmlWithDefault() throws Exception {
 
-        var filePath1 = pathToDirectory + "file3.yml";
-        var filePath2 = pathToDirectory + "file4.yml";
+        var filePath1 = pathToDirectory + "file1.yml";
+        var filePath2 = pathToDirectory + "file2.yml";
         String actual = Differ.generate(filePath1, filePath2);
-        String expected = Files.readString(Path.of(pathToDirectoryResult + "testYmlWithDefault.txt"));
+        String expected = resultStylish;
         assertThat(actual).isEqualTo(expected);
 
     }
@@ -81,7 +102,7 @@ class AppTest {
         var filePath1 = pathToDirectory + "file1.yml";
         var filePath2 = pathToDirectory + "file2.yml";
         String actual = Differ.generate(filePath1, filePath2, "plain");
-        String expected = Files.readString(Path.of(pathToDirectoryResult + "formatJsonWithPlain.txt"));
+        String expected = resultPlain;
         assertThat(actual).isEqualTo(expected);
 
     }
@@ -92,7 +113,7 @@ class AppTest {
         var filePath1 = pathToDirectory + "file1.yml";
         var filePath2 = pathToDirectory + "file2.yml";
         String actual = Differ.generate(filePath1, filePath2, "stylish");
-        String expected = Files.readString(Path.of(pathToDirectoryResult + "result_formatJsonDefault.txt"));
+        String expected = resultStylish;
         assertThat(actual).isEqualTo(expected);
 
     }
@@ -103,7 +124,7 @@ class AppTest {
         var filePath1 = pathToDirectory + "file1.yml";
         var filePath2 = pathToDirectory + "file2.yml";
         String actual = Differ.generate(filePath1, filePath2, "json");
-        String expected = Files.readString(Path.of(pathToDirectoryResult + "formatJsonWithJson.json"));
+        String expected = resultJson;
         assertThat(actual).isEqualTo(expected);
 
     }
@@ -127,45 +148,5 @@ class AppTest {
         assertThat(actual).isEqualTo(expected);
 
     }
-
-    @Test
-    public void testFormatterStylish() throws IOException {
-
-        Map<String, Item> map = new TreeMap<>();
-        map.put("Russia", new Item("Moscow", "added"));
-        map.put("Japan", new Item("Tokio", "deleted"));
-        map.put("USA", new Item("Washington", "unchanged"));
-        String actual = Stylish.makeStylish(map);
-        String expected = Files.readString(Path.of(pathToDirectoryResult + "testFormatterStylish.txt"));
-        assertThat(actual).isEqualTo(expected);
-
-    }
-
-    @Test
-    public void testFormatterPlain() throws IOException {
-
-        Map<String, Item> map = new TreeMap<>();
-        map.put("Russia", new Item("Moscow", "added"));
-        map.put("Japan", new Item("Tokio", "deleted"));
-        map.put("USA", new Item("Washington", "unchanged"));
-        String actual = Plain.makePlain(map);
-        String expected = Files.readString(Path.of(pathToDirectoryResult + "testFormatterPlain.txt"));
-        assertThat(actual).isEqualTo(expected);
-
-    }
-    @Test
-    public void testFormatterJson() throws IOException {
-
-        Map<String, Item> map = new TreeMap<>();
-        map.put("Russia", new Item("Moscow", "added"));
-        map.put("Japan", new Item("Tokio", "deleted"));
-        map.put("USA", new Item("Washington", "unchanged"));
-        String actual = Json.makeJson(map);
-        String expected = Files.readString(Path.of(pathToDirectoryResult + "testFormatterJson.json"));
-        assertThat(actual).isEqualTo(expected);
-
-    }
-
-
 
 }

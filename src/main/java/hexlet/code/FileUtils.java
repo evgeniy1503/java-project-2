@@ -11,14 +11,14 @@ public class FileUtils {
     public static final String YAML = "yaml";
     public static String readFile(String pathToFile) throws Exception {
 
-        String containsFile;
+        String content;
         Path pathFile;
         File file = new File(pathToFile);
         String absolutePath = file.getAbsolutePath();
         pathFile = Path.of(absolutePath);
 
-        containsFile = Files.readString(pathFile);
-        return containsFile;
+        content = Files.readString(pathFile);
+        return content;
 
     }
 

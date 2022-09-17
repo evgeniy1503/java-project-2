@@ -7,12 +7,11 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import java.util.Map;
 import java.util.TreeMap;
 
-import static hexlet.code.FileUtils.YML;
-import static hexlet.code.FileUtils.YAML;
+import static hexlet.code.FileUtils.*;
 
 public class Parser {
 
-    public static Map<String, Object> getData(String contains, String dataFormat) throws Exception {
+    public static Map<String, Object> getData(String content, String dataFormat) throws Exception {
 
         ObjectMapper objectMapper;
 
@@ -20,18 +19,19 @@ public class Parser {
 
             case YAML, YML -> {
                 objectMapper = new ObjectMapper(new YAMLFactory());
-                objectMapper.readValue(contains, new TypeReference<TreeMap<String, Object>>() {
+                objectMapper.readValue(content, new TypeReference<TreeMap<String, Object>>() {
                 });
             }
-            default -> {
+            case JSON -> {
                 objectMapper = new ObjectMapper();
-                objectMapper.readValue(contains, new TypeReference<TreeMap<String, Object>>() {
+                objectMapper.readValue(content, new TypeReference<TreeMap<String, Object>>() {
                 });
-
             }
+            default -> throw new Exception("Extension error");
+
         }
 
-        return objectMapper.readValue(contains, new TypeReference<TreeMap<String, Object>>() { });
+        return objectMapper.readValue(content, new TypeReference<TreeMap<String, Object>>() { });
     }
 
 }
