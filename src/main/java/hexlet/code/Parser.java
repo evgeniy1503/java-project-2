@@ -7,7 +7,9 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import java.util.Map;
 import java.util.TreeMap;
 
-import static hexlet.code.FileUtils.*;
+import static hexlet.code.FileUtils.JSON;
+import static hexlet.code.FileUtils.YAML;
+import static hexlet.code.FileUtils.YML;
 
 public class Parser {
 

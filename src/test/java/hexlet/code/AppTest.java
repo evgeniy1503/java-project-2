@@ -3,19 +3,11 @@
  */
 package hexlet.code;
 
-import hexlet.code.formatter.Json;
-import hexlet.code.formatter.Plain;
-import hexlet.code.formatter.Stylish;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Map;
-import java.util.TreeMap;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class AppTest {
