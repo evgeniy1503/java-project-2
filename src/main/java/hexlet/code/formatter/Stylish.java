@@ -37,7 +37,7 @@ public class Stylish {
                     result.append(" ".repeat(2))
                             .append(item.getKey()).append(": ").append(item.getValue().getOldValue());
                     break;
-                default: throw new Exception("Error build format Stylish");
+                default: throw new Exception("Incorrect status: '" + item.getValue().getStatus() + "'");
 
             }
         }

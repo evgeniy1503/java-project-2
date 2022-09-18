@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
@@ -15,25 +16,30 @@ public class Parser {
 
     public static Map<String, Object> getData(String content, String dataFormat) throws Exception {
 
-        ObjectMapper objectMapper;
-
         switch (dataFormat) {
-
             case YAML, YML -> {
-                objectMapper = new ObjectMapper(new YAMLFactory());
-                objectMapper.readValue(content, new TypeReference<TreeMap<String, Object>>() {
-                });
+               return parseYml(content);
             }
             case JSON -> {
-                objectMapper = new ObjectMapper();
-                objectMapper.readValue(content, new TypeReference<TreeMap<String, Object>>() {
-                });
+               return parseJson(content);
             }
-            default -> throw new Exception("Extension error");
-
+            default -> throw new Exception("Unknown format: '" + dataFormat + "'");
         }
 
-        return objectMapper.readValue(content, new TypeReference<TreeMap<String, Object>>() { });
+    }
+
+    public static Map<String, Object> parseYml(String content) throws JsonProcessingException {
+
+        ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
+       return objectMapper.readValue(content, new TypeReference<TreeMap<String, Object>>() {
+        });
+
+    }
+
+    public static Map<String, Object> parseJson(String content) throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.readValue(content, new TypeReference<TreeMap<String, Object>>() {
+        });
     }
 
 }

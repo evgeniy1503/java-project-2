@@ -18,8 +18,8 @@ public class Plain {
 
         for (Map.Entry<String, Item> item : differ.entrySet()) {
 
-            Object newValue = checkValue(item.getValue().getNewValue());
-            Object oldValue = checkValue(item.getValue().getOldValue());
+            String newValue = checkValue(item.getValue().getNewValue());
+            String oldValue = checkValue(item.getValue().getOldValue());
 
             if (!item.getValue().getStatus().equals(UNCHANGED)) {
                 switch (item.getValue().getStatus()) {
@@ -30,7 +30,7 @@ public class Plain {
                     case CHANGED -> result.append("Property '").append(item.getKey())
                             .append("' was updated. From ").append(oldValue)
                             .append(" to ").append(newValue).append("\n");
-                    default -> throw new Exception("Error build format Plain");
+                    default -> throw new Exception("Incorrect status: '" + item.getValue().getStatus() + "'");
                 }
             }
         }
