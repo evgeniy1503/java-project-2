@@ -18,10 +18,10 @@ public class Parser {
 
         switch (dataFormat) {
             case YAML, YML -> {
-               return parseYml(content);
+                return parseYml(content);
             }
             case JSON -> {
-               return parseJson(content);
+                return parseJson(content);
             }
             default -> throw new Exception("Unknown format: '" + dataFormat + "'");
         }
@@ -31,7 +31,7 @@ public class Parser {
     public static Map<String, Object> parseYml(String content) throws JsonProcessingException {
 
         ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
-       return objectMapper.readValue(content, new TypeReference<TreeMap<String, Object>>() {
+        return objectMapper.readValue(content, new TypeReference<TreeMap<String, Object>>() {
         });
 
     }
