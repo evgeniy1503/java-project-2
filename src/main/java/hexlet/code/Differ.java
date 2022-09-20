@@ -1,8 +1,6 @@
 package hexlet.code;
 
-import hexlet.code.formatter.Json;
-import hexlet.code.formatter.Plain;
-import hexlet.code.formatter.Stylish;
+import hexlet.code.formatter.Formatter;
 
 import java.util.Map;
 
@@ -22,13 +20,7 @@ public class Differ {
 
         Map<String, Item> differ = Differences.getDiff(data1, data2);
 
-        return switch (format) {
-
-            case "plain" -> Plain.makePlain(differ);
-            case "json" -> Json.makeJson(differ);
-            case  "stylish" -> Stylish.makeStylish(differ);
-            default -> throw new Exception("Formatting error");
-        };
+        return Formatter.getFormat(differ, format);
 
     }
     public static String generate(String firstFilePath, String secondFilePath) throws Exception {

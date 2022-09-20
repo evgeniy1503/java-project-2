@@ -21,17 +21,16 @@ public class Plain {
             String newValue = checkValue(item.getValue().getNewValue());
             String oldValue = checkValue(item.getValue().getOldValue());
 
-            if (!item.getValue().getStatus().equals(UNCHANGED)) {
-                switch (item.getValue().getStatus()) {
-                    case ADDED -> result.append("Property '").append(item.getKey())
-                            .append("' was added with value: ").append(oldValue).append("\n");
-                    case DELETED -> result.append("Property '").append(item.getKey())
-                            .append("' was removed").append("\n");
-                    case CHANGED -> result.append("Property '").append(item.getKey())
-                            .append("' was updated. From ").append(oldValue)
-                            .append(" to ").append(newValue).append("\n");
-                    default -> throw new Exception("Incorrect status: '" + item.getValue().getStatus() + "'");
-                }
+            switch (item.getValue().getStatus()) {
+                case ADDED -> result.append("Property '").append(item.getKey())
+                        .append("' was added with value: ").append(oldValue).append("\n");
+                case DELETED -> result.append("Property '").append(item.getKey())
+                        .append("' was removed").append("\n");
+                case CHANGED -> result.append("Property '").append(item.getKey())
+                        .append("' was updated. From ").append(oldValue)
+                        .append(" to ").append(newValue).append("\n");
+                case UNCHANGED -> { }
+                default -> throw new Exception("Incorrect status: '" + item.getValue().getStatus() + "'");
             }
         }
         return result.toString().trim();
